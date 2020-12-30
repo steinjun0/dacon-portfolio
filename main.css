@@ -1,0 +1,652 @@
+@font-face {
+  font-family: "Nanum Barun Gothic";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./font/NanumBarunGothic.eot"); /* IE9 Compat Modes */
+  src: url("./font/NanumBarunGothic.eot?#iefix") format("embedded-opentype"),
+    /* Pretty Modern Browsers */ url("./font/NanumBarunGothic.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("./font/NanumBarunGothic.svg#svgFontName")
+      format("svg"); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: "Nanum Barun Gothic";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./font/NanumBarunGothicBold.eot"); /* IE9 Compat Modes */
+  src: url("./font/NanumBarunGothicBold.eot?#iefix") format("embedded-opentype"),
+    /* Pretty Modern Browsers */ url("./font/NanumBarunGothicBold.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("./font/NanumBarunGothicBold.svg#svgFontName") format("svg"); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: "Nanum Barun Gothic";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./font/NanumBarunGothicLight.eot"); /* IE9 Compat Modes */
+  src: url("./font/NanumBarunGothicLight.eot?#iefix")
+      format("embedded-opentype"),
+    /* Pretty Modern Browsers */ url("./font/NanumBarunGothicLight.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("./font/NanumBarunGothicLight.svg#svgFontName") format("svg"); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: "Nanum Barun Gothic";
+  font-style: normal;
+  font-weight: 100;
+  src: url("./font/NanumBarunGothicUltraLight.eot"); /* IE9 Compat Modes */
+  src: url("./font/NanumBarunGothicUltraLight.eot?#iefix")
+      format("embedded-opentype"),
+    /* Pretty Modern Browsers */ url("./font/NanumBarunGothicUltraLight.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("./font/NanumBarunGothicUltraLight.svg#svgFontName") format("svg"); /* Legacy iOS */
+}
+
+:root {
+  --super-light-gray: #f2f2f2;
+  --light-gray: #d9d9d9;
+  --timer-red: #fda9a9;
+  --timer-text-red: #f84747;
+  --dacon-blue: #80a3ca;
+}
+
+* {
+  text-decoration: none;
+}
+
+body,
+div,
+ul,
+li {
+  font-family: "Nanum Barun Gothic", "NanumBarunGothic", sans-serif;
+  font-weight: 100;
+}
+
+h1 {
+  font-family: "Nanum Barun Gothic", "NanumBarunGothic", sans-serif;
+  font-weight: 100;
+  display: flex;
+}
+
+body {
+  padding: 0;
+  margin: 5rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.title h1 {
+  background-color: var(--super-light-gray);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px auto 0px 0px;
+  padding: 0.5em 2rem;
+  font-size: 3rem;
+  font-weight: 100;
+}
+
+.site-buttons-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 7rem;
+}
+
+.site-buttons-wrap .site-button {
+  outline: none;
+  border: 2px solid var(--light-gray);
+  background-color: rgba(255, 255, 255, 0);
+  font-family: "Nanum Barun Gothic";
+  font-size: 1.5rem;
+  font-weight: 100;
+  padding: 0.5rem 2rem;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  color: rgb(0, 0, 0);
+}
+
+.site-buttons-wrap #twin-stopwatch-button:hover {
+  outline: none;
+  border: 2px solid var(--timer-red);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.site-buttons-wrap #dacon-button:hover {
+  outline: none;
+  border: 2px solid var(--dacon-blue);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.stopwatch-transition-enter-active,
+.stopwatch-transition-leave-active {
+  transition: opacity 1s;
+}
+.stopwatch-transition-enter, .stopwatch-transition-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.dacon-transition-enter-active,
+.dacon-transition-leave-active {
+  transition: opacity 1s;
+}
+.dacon-transition-enter, .dacon-transition-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.stopwatch-content {
+  border: 2px solid var(--timer-red);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin: 0 10vw;
+  padding-bottom: 2rem;
+}
+
+.stopwatch-content .first-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+}
+.stopwatch-content .first-block img {
+  width: 25rem;
+  height: 17.5rem;
+  padding-top: 5rem;
+}
+
+.stopwatch-content .first-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2vw 0;
+  padding-top: 5rem;
+}
+
+.stopwatch-content .first-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.stopwatch-content .first-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stopwatch-content .first-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.stopwatch-content .second-block {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+  margin-left: 2vw;
+}
+.stopwatch-content .second-block img {
+  width: 30rem;
+  height: 14rem;
+  padding-bottom: 3rem;
+}
+
+.stopwatch-content .second-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2rem 0;
+  margin-bottom: 10rem;
+}
+
+.stopwatch-content .second-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.stopwatch-content .second-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stopwatch-content .second-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.stopwatch-content .third-block {
+  padding-top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+  margin-left: 3vw;
+}
+
+.stopwatch-content .third-block img {
+  width: 35rem;
+  height: 23rem;
+  padding-top: 5rem;
+}
+
+.stopwatch-content .third-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.stopwatch-content .third-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.stopwatch-content .third-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stopwatch-content .third-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.stopwatch-content .fourth-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+  margin-left: 7vw;
+}
+
+.stopwatch-content .fourth-block img {
+  width: 23rem;
+  height: 34rem;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  margin-top: 5rem;
+}
+
+.stopwatch-content .fourth-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.stopwatch-content .fourth-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.stopwatch-content .fourth-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stopwatch-content .fourth-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.stopwatch-content .fourth-block .stopwatch-link {
+  margin-top: 3rem;
+  outline: none;
+  border: 2px solid var(--light-gray);
+  background-color: rgba(255, 255, 255, 0);
+  font-family: "Nanum Barun Gothic";
+  font-size: 1.5rem;
+  font-weight: 100;
+  padding: 0.5rem 2rem;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  outline: none;
+  border: 2px solid var(--timer-red);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+}
+
+.stopwatch-content .fourth-block .stopwatch-link:hover {
+  outline: none;
+  border: 2px solid var(--light-gray);
+  color: var(--timer-text-red);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.stopwatch-content .fourth-block .close-stopwatch-button {
+  margin-top: 3rem;
+  outline: none;
+  border: 2px solid var(--light-gray);
+  background-color: rgba(255, 255, 255, 0);
+  font-family: "Nanum Barun Gothic";
+  font-size: 1.5rem;
+  font-weight: 100;
+  padding: 0.5rem 2rem;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  outline: none;
+  border: 2px solid var(--light-gray);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.stopwatch-content .fourth-block .close-stopwatch-button:hover {
+  outline: none;
+  border: 2px solid var(--dacon-blue);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------- */
+
+.dacon-content {
+  border: 2px solid var(--timer-red);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin: 0 10vw;
+  padding-bottom: 2rem;
+}
+
+.dacon-content .first-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+}
+.dacon-content .first-block img {
+  width: 25rem;
+  height: 17.5rem;
+  padding-top: 5rem;
+}
+
+.dacon-content .first-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2vw 0;
+  padding-top: 5rem;
+}
+
+.dacon-content .first-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.dacon-content .first-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dacon-content .first-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.dacon-content .second-block {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+  margin-left: 2vw;
+}
+.dacon-content .second-block img {
+  width: 30rem;
+  height: 14rem;
+  padding-bottom: 3rem;
+}
+
+.dacon-content .second-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2rem 0;
+  margin-bottom: 10rem;
+}
+
+.dacon-content .second-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.dacon-content .second-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dacon-content .second-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.dacon-content .third-block {
+  padding-top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+  margin-left: 3vw;
+}
+
+.dacon-content .third-block img {
+  width: 35rem;
+  height: 23rem;
+  padding-top: 5rem;
+}
+
+.dacon-content .third-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.dacon-content .third-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.dacon-content .third-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dacon-content .third-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.dacon-content .fourth-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+  margin-left: 7vw;
+}
+
+.dacon-content .fourth-block img {
+  width: 23rem;
+  height: 34rem;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  margin-top: 5rem;
+}
+
+.dacon-content .fourth-block .text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.dacon-content .fourth-block .text-box .title-box h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.dacon-content .fourth-block .text-box .subtitle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dacon-content .fourth-block .text-box .subtitle-box h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: 100;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+.dacon-content .fourth-block .stopwatch-link {
+  margin-top: 3rem;
+  outline: none;
+  border: 2px solid var(--light-gray);
+  background-color: rgba(255, 255, 255, 0);
+  font-family: "Nanum Barun Gothic";
+  font-size: 1.5rem;
+  font-weight: 100;
+  padding: 0.5rem 2rem;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  outline: none;
+  border: 2px solid var(--timer-red);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+}
+
+.dacon-content .fourth-block .stopwatch-link:hover {
+  outline: none;
+  border: 2px solid var(--light-gray);
+  color: var(--timer-text-red);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.dacon-content .fourth-block .close-stopwatch-button {
+  margin-top: 3rem;
+  outline: none;
+  border: 2px solid var(--light-gray);
+  background-color: rgba(255, 255, 255, 0);
+  font-family: "Nanum Barun Gothic";
+  font-size: 1.5rem;
+  font-weight: 100;
+  padding: 0.5rem 2rem;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  outline: none;
+  border: 2px solid var(--light-gray);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.dacon-content .fourth-block .close-stopwatch-button:hover {
+  outline: none;
+  border: 2px solid var(--dacon-blue);
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}

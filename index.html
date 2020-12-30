@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jun's Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <script defer src="./main.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="title">
+        <h1>Portfolio For DACON</h1>
+        <h1>프론트 개발 지원</h1>
+      </div>
+      <div class="site-buttons-wrap">
+        <transition name="stopwatch-transition">
+          <button
+            v-if="stopwatchButtonShow"
+            class="site-button"
+            id="twin-stopwatch-button"
+            v-on:click="openStopwatchContent();"
+          >
+            Twin Stopwatch
+          </button>
+          <div v-else-if="stopwatchContentShow" class="stopwatch-content">
+            <div class="first-block">
+              <img src="./src/img/stopwatch1.png" alt="" />
+              <div class="text-box">
+                <div class="title-box">
+                  <h1>시간을 더욱 효율적으로</h1>
+                  <h1>일, 그리고 휴식</h1>
+                </div>
+                <div class="subtitle-box">
+                  <h3>HTML, CSS</h3>
+                  <h3>Node.js, express, AWS</h3>
+                  <h3>With javascript</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="second-block">
+              <img src="./src/img/stopwatch2.png" alt="" />
+              <div class="text-box">
+                <div class="title-box">
+                  <h1>Google API를 활용한</h1>
+                  <h1>OAuth 인증</h1>
+                </div>
+              </div>
+            </div>
+
+            <div class="third-block">
+              <img src="./src/img/stopwatch3.png" alt="" />
+              <div class="text-box">
+                <div class="title-box">
+                  <h1>파이 그래프를 통한</h1>
+                  <h1>직관적인 UI</h1>
+                </div>
+                <div class="subtitle-box">
+                  <h3>With Chart.js</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="fourth-block">
+              <img src="./src/img/stopwatch4.png" alt="" />
+              <div class="text-box">
+                <div class="title-box">
+                  <h1>모바일에서도 사용가능한</h1>
+                  <h1>반응형 디자인</h1>
+                </div>
+                <div class="subtitle-box">
+                  <a
+                    target="blank"
+                    href="http://twinstopwatch.ga"
+                    class="stopwatch-link"
+                  >
+                    On Click: Enter Twin Stopwatch
+                  </a>
+                  <button
+                    v-on:click="closeStopwatchContent();"
+                    class="close-stopwatch-button"
+                  >
+                    close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </transition>
+        <transition name="dacon-transition" mode="out-in">
+          <a
+            href="#"
+            target="blank"
+            v-if="daconButtonShow"
+            class="site-button"
+            id="dacon-button"
+          >
+            Cloning DACON
+          </a>
+          <div v-else-if="daconContentShow" class="dacon-content">dacon</div>
+        </transition>
+      </div>
+    </div>
+  </body>
+</html>
